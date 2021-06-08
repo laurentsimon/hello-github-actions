@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./action-a
         with:
-          MY_NAME: ${{ github.context.payload.pull_request.title }}
+          MY_NAME: ${{ github.event.commits[0].message }}
       # https://gist.github.com/ovitente/36e6d85304e8627b6f86160352257b0e
       - env : { EVENT : "${{ toJson(github.event) }}" }
         run : "echo EVENT=$EVENT"
