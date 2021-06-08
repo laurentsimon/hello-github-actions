@@ -8,9 +8,10 @@ jobs:
       - uses: actions/checkout@v1
       - uses: ./action-a
         with:
-        # https://gist.github.com/ovitente/36e6d85304e8627b6f86160352257b0e
-          MY_GITHUB: ${{ toJson(github.event) }}
           MY_NAME: ${{ github.context.payload.pull_request.title }}
+      # https://gist.github.com/ovitente/36e6d85304e8627b6f86160352257b0e
+      - env : { EVENT : "${{ toJson(github.event) }}" }
+        run : "echo EVENT=$EVENT"
   injection-ok2:
     name: Injection2
     runs-on: ubuntu-latest
