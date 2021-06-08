@@ -1,0 +1,31 @@
+name: A workflow with injection vuln
+on: push
+jobs:
+  injection-ok1:
+    name: Injection1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: ./action-a
+        with:
+          MY_NAME: ${{ github.context.payload.pull_request.title }}
+  injection-ok2:
+    name: Injection2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        shell: bash
+        env:
+                MYINPUT: ${{ github.context.payload.pull_request.title }}
+      - run: |
+              echo MYINPUT: $MYINPUT
+  injection-success:
+    name: Injection3
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - shell: bash
+      - run: |
+              echo "title is ${{ github.context.payload.pull_request.title }}"
+
+
