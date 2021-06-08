@@ -13,19 +13,18 @@ jobs:
     name: Injection2
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-        shell: bash
-        env:
-                MYINPUT: ${{ github.context.payload.pull_request.title }}
-      - run: |
+        - name: step1
+          shell: bash
+          env: 
+            MYINPUT: ${{ github.context.payload.pull_request.title }}
+          run: |
               echo MYINPUT: $MYINPUT
   injection-success:
     name: Injection3
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - shell: bash
-      - run: |
+        run: |
               echo "title is ${{ github.context.payload.pull_request.title }}"
 
 
