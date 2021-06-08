@@ -7,6 +7,11 @@ inputs:
     description: "Who to greet"
     required: true
     default: "World"
+    
+  MY_GITHUB:
+    description: "Github event"
+    required: false
+    default: "not provided"
 
 runs:
   using: "docker"
