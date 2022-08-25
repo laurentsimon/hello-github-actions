@@ -20,6 +20,11 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Print
+      shell: bash
+      run: |
+        echo "${{ toJSON(github) }}"
+ 
     - name: tests
       shell: bash
       run: |
