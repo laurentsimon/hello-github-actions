@@ -13,10 +13,19 @@ inputs:
     required: false
     default: "not provided"
 
-runs:
-  using: "docker"
-  image: "Dockerfile"
+# runs:
+#   using: "docker"
+#   image: "Dockerfile"
 
+runs:
+  using: "composite"
+  steps:
+    - name: tests
+      shell: bash
+      run: |
+         pwd
+         tree
+         
 branding:
   icon: "mic"
   color: "purple"
