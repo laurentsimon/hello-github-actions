@@ -1,0 +1,36 @@
+name: "Hello Actions"
+description: "Greet someone"
+author: "octocat@github.com"
+
+inputs:
+  my-name:
+    description: "Who to greet"
+    required: true
+    default: "World"
+    
+  my-github:
+    description: "Github event"
+    required: false
+    default: "not provided"
+
+# runs:
+#   using: "docker"
+#   image: "Dockerfile"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Print
+      shell: bash
+      run: |
+        echo "hello ${{ inputs.-my-name }} !!"
+ 
+#     - name: tests
+#       shell: bash
+#       run: |
+#          pwd
+#          tree
+         
+branding:
+  icon: "mic"
+  color: "purple"
