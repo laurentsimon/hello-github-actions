@@ -23,7 +23,7 @@ runs:
     - name: Print
       shell: bash
       run: |
-        echo "hello ${{ inputs.-my-name }} !!"
+        echo "hello ${{ inputs.my-name }} !!"
  
 #     - name: tests
 #       shell: bash
